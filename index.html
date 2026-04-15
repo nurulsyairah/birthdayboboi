@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For You BBY❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Georgia', serif;
+    background: linear-gradient(135deg, #e6005c, #cc0052);
+    text-align: center;
+    color: white;
+    overflow: hidden;
+}
+
+h1 {
+    margin-top: 120px;
+    font-size: 50px;
+}
+
+/* Button */
+button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(45deg, #ffb6c1, #ff69b4);
+    color: black;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+/* Letter */
+.letter {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background: white;
+    color: #333;
+    padding: 25px;
+    border-radius: 20px;
+    width: 320px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    transition: 0.5s;
+}
+
+.letter.show {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Image */
+.letter img {
+    width: 100%;
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+
+/* Typewriter */
+#text {
+    border-right: 2px solid black;
+    white-space: pre-line;
+    overflow: hidden;
+}
+
+/* Close button */
+.close {
+    margin-top: 10px;
+    background: #ff4d6d;
+    color: white;
+}
+
+/* Hearts */
+.heart {
+    position: absolute;
+    color: pink;
+    animation: floatUp 6s linear infinite;
+}
+
+@keyframes floatUp {
+    0% { bottom: -50px; opacity: 0; }
+    50% { opacity: 1; }
+    100% { bottom: 100%; opacity: 0; }
+}
+
+/* Confetti */
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: white;
+    animation: fall 5s linear infinite;
+}
+
+@keyframes fall {
+    0% { top: -10px; }
+    100% { top: 100%; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🎵 Music -->
+<audio id="music" loop>
+<source src="Photograph (Instrumental) - Ed Sheeran.mp3">
+</audio>
+
+<h1>For My Boboi ❤️</h1>
+<p>Selamat ulang tahun bby 🎂🤍</p>
+<p>Semoga dipermudahkan segala urusan awak dan diluaskan rezeki.</p>
+<p>Semoga Allah kurniakan rezeki yang tak terhingga… bolehlah kita cepat kawen nanti 😆🤍</p>
+<p>Click sini 💌</p>
+
+<button onclick="openLetter()"> Surat Cinta 💖</button>
+
+<div id="letter" class="letter">
+    <img src="boboi.jpg">
+
+    <h3>Happy Birthday Bby 🎂</h3>
+
+    <p id="text"></p>
+
+    <button class="close" onclick="closeLetter()">Close ❌</button>
+</div>
+
+<script>
+let message = `Terima kasih sebab jadi sebahagian dalam hidup saya...
+Terima kasih untuk setiap moment, sabar awak & usaha awak 💕
+
+Saya harap apa yang kita bina ini bukan sekadar sementara… tapi berpanjangan hingga ke akhirnya. 
+Semoga hubungan kita menuju ke arah yang lebih baik, diberkati, 
+dan dipermudahkan ke jalan yang halal 🥺🤍
+
+Kalau Allah izinkan, saya nak terus ada dengan awak.
+Semoga kita sama-sama terus jadi lebih baik dari hari ke hari,
+saling memperbaiki diri, dan kuat untuk kawal diri dari perkara yang tak baik.
+
+with all my heart, I love you Bby❤️`;
+
+let i = 0;
+
+function typeWriter() {
+    if (i < message.length) {
+        document.getElementById("text").innerHTML += message.charAt(i);
+        i++;
+        setTimeout(typeWriter, 40);
+    }
+}
+
+function openLetter() {
+    document.getElementById("letter").classList.add("show");
+    document.getElementById("music").play();
+    typeWriter();
+    startEffects();
+}
+
+function closeLetter() {
+    document.getElementById("letter").classList.remove("show");
+}
+
+// hearts
+function startEffects() {
+    setInterval(() => {
+        let heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "💖";
+        heart.style.left = Math.random() * 100 + "vw";
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 6000);
+    }, 300);
+
+    // confetti
+    setInterval(() => {
+        let confetti = document.createElement("div");
+        confetti.classList.add("confetti");
+        confetti.style.left = Math.random() * 100 + "vw";
+        document.body.appendChild(confetti);
+
+        setTimeout(() => confetti.remove(), 5000);
+    }, 200);
+}
+</script>
+
+</body>
+</html>
